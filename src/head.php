@@ -1,3 +1,4 @@
+<?php 	require("seguridad.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>

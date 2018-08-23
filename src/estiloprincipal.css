@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "Regular";
+    src: url("HelveticaNeueLTStd-Lt.otf") format("truetype")
+}
+
+@font-face {
+    font-family: "Light";
+    src: url("OpenSans-Light.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: "ExtraBold";
+    src: url("HelveticaNeueLTStd-Bd.otf") format("truetype")
+}
+
+@font-face {
+    font-family: "Compacta";
+    src: url("Abel-Regular.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: "Garigoleada";
+    src: url("Windsong.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: "Pizarra";
+    src: url("CFCrayons-Regular.ttf") format("truetype")
+}
+
+::-webkit-scrollbar {
+    width: 20px
+}
+
+::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3); */
+    /* -webkit-box-shadow: inset 0 0 3px #005BA0; */
+    background-color:#EBEBEB;
+    opacity: 0.5;
+    width: 20px;
+
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    /* -webkit-box-shadow: inset 0 0 3px #A3C30F; */
+    background-color:#D6D6D6;
+    /* -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5) */
+}
+
+body {
+    font-family: Verdana;
+    margin: 0px;
+    text-align: center;
+    background-image: url("../img/fondo.png");
+    background-color:#4D004D;
+
+}
