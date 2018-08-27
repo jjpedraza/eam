@@ -18,59 +18,58 @@
 <?php
 
 ?>
-<div id='login'	>
+<div id='login' 	>
+	<h1> PubliSMS | Identificate:! </h1>
 	<form action='login.php' method="post">	
 	<?php
 		session_start();		
 	?>
-		<input type='text' name='sms_username' placeholder='Escriba su correo' required>
-		<input type="password" name="nip" placeholder='Escriba su NIP' required>
+		<input type='text' name='sms_username' placeholder='Escriba tu usuario (correo)' required>
+		<input type="password" name="nip" placeholder='Escriba tu password' required>
 
-		<button class='btn btn-default'>
-			Entrar			
-		</button>
+		<input type='submit' class='btn btn-default' value='ENTRAR' name='login'>
 	</form>
 
 
 <?php
-if (isset($_POST['username'])){
-	$id = $_POST['username'];
+if (isset($_POST['login'])){
+	$id = $_POST['sms_username'];
 	$nip = $_POST['nip'];
 
-	$sql="SELECT * FROM empleados WHERE (nitavu='".$id."' and nip='".$nip."')";
+	$sql="SELECT * FROM usuarios WHERE (correo='".$id."' and password='".$nip."')";
+	// echo $sql;
 	$resultado = $conexion -> query($sql);
 	if($fila = $resultado -> fetch_array())	
-		{
-		if ($fila['estado']=='')
-		{
+	{
+		if ($fila['estado']==0)
+			{
+				
+				session_start();
+				$_SESSION['sms_user']=$fila['correo'];	
 			
-			session_start();
-			$_SESSION['user']=$fila['nitavu'];	
-		
-			global $nitavu;
-			$nitavu = $fila['nitavu'];	
+				global $sms_user;
+				$sms_user = $fila['correo'];	
 
-			historia($nitavu,'Acceso a la plataforma<br>'.detectar().'');
-			header('location:index.php');	
-		}
+				
+				header('location:index.php');	
+			}
 
 		else {
-			//session_start();
-			//$_SESSION['user']=$fila['nitavu'];	
-		
-			//global $nitavu;
-			//$nitavu = $fila['nitavu'];	
 
-			historia($fila['nitavu'],'<b class="alerta">Acceso Denegado. </b> <br> estado del empleado = '.$fila['estado'].'<br>Desde: <br>'.detectar().'');	
-			mensaje('Error inesperado','index.php');
-		}
+				mensaje('Error inesperado','index.php');
+			}
 
 				
 
 		} 
 	else 
-		{historia($id,'Acceso a la plataforma fallida con nip '.$nip); mensaje("Error en el usuario y nip",'index.php');} 
+		{
+			// historia($id,'Acceso a la plataforma fallida con nip '.$nip); mensaje("Error en el usuario y nip",'index.php');
+			mensaje("Password incorrecto",'login.php');
+		} 
 		
+
+} else {
 
 }
 ?>

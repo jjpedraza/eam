@@ -17,7 +17,18 @@ $paginacion= 20;
 	$dbhost = 'localhost';
 	$dbuser = 'root';
 	$dbpass = '';
-	$dbname = 'publisms';
+	$dbname = 'publicsms';
+
+	if (function_exists('mysqli_connect')) {
+		//mysqli está instalado
+			//echo 'Si';
+			$conexion = new mysqli($dbhost,$dbuser,$dbpass,$dbname);
+			$acentos = $conexion->query("SET NAMES 'utf8'"); // para los acentos
+			global $conexion;
+		}else{
+			//mensaje("Hay un problema con la extension de mysqli",'');
+			echo phpinfo();
+		}
 
 
 
