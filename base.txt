@@ -1,0 +1,5 @@
+CREATE TABLE `celulares` (
+  `celular` varchar(10) NOT NULL,
+  PRIMARY KEY (`celular`),
+  KEY `idx_cel` (`celular`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
