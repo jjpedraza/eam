@@ -21,7 +21,7 @@ echo "</div>";
 
 echo "<div><label></label>";
 echo "<input type='submit' name='cliente' class='btn btn-default' value='Guardar'>";
-echo "<a href='' class='btn btn-secundario'>Importar</a>";
+echo "<a href='' class='btn btn-secundario  '>Importar</a>";
 echo "</div>";
 
 

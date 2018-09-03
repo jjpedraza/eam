@@ -1,4 +1,10 @@
-<?php 	require("seguridad.php"); ?>
+<?php 	
+require("seguridad.php"); 
+require("src/config.php"); 
+require("src/funciones.php"); 
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

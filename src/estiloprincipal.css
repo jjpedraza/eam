@@ -51,6 +51,31 @@
 #menuprincipal{ 
     width:100%;
 }
+
+
+.tabla { width: 100%; font-size: 10pt; font-family: "Regular"; }
+.tabla a { }
+.tabla a:hover { }
+.tabla tr { margin-top: 5px; margin-bottom: 5px; }
+.tabla tr:nth-child(even) td { background: #E8E8E8; padding: 5px; opacity: 0.8; }
+.tabla tr:nth-child(odd) td { background: white; padding: 5px; opacity: 0.8; }
+
+#terminal{
+    width: 100%;
+    height: 300px;
+    background-color: orange;
+    overflow: auto;
+    padding: 4px;
+    
+}
+article {
+    width: 40%;
+    padding: 5px; margin: 5px;
+    border-radius: 3px;
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    display: inline-block; vertical-align: top;
+}
 .forma{
     position: absolute;
     width: 100%;

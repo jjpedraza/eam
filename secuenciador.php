@@ -1,62 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
+
     
 <?php
 
+include('src/head.php');
 
-//833 000 1234
+echo "<form action='secuenciador.php' method='post'>";
+echo "<h3>Generador de ramas telefonicas</h3>";
+
+echo "<div><label>Lada</label><input type='text' size=3 placeholder='000' name='lada' min=1 max=999 maxlength=3></div>";
+echo "<div><label>Rama</label><input type='text' size=3 placeholder='000' name='rama' min=1 max=999 maxlength='3'></div>";
+
+echo "<div><input type='submit' value='Generar' class='btn btn-default' name='genera'></div>";
+echo "</form>";
+
+if (isset($_POST['genera'])){
+    $lada = $_POST['lada']; $rama = $_POST['rama']; $celular = "";
+    $Array=permutations("0123456789",4);    
+    $total = COUNT($Array); $porcentaje =0;
+    echo "<table class='tabla'><th></th><th>Numero</th><th></th><th></th>";
+
+    FOR($i=0 ; $i < COUNT($Array) ; $i++) { 
+            echo "<tr>";
+            echo "<td>".$i."</td>";
+            $celular = $lada.$rama. $Array[$i];
+            echo  "<td>".$celular."</td>";
+            echo "<td>";
 
 
+            $sql = "INSERT INTO celulares(celular) VALUES ('".$celular."')";
+            if ($conexion->query($sql) == TRUE)
+                { echo "OK";}
+            else { echo "X <br><label>".$sql."</label>";}
+        
+            echo "</td>";
 
+            echo "<td>";
+            $porcentaje = $i / $total * 100;
+            echo "<b>".$porcentaje."%</b>";
 
+            echo "</td>";
+            echo "</tr>"; 
+            sleep(0.5);
+    } 
+    echo "</table>";
+    echo "<h1>Total de Permutaciones: ". COUNT($Array)."</h1>";
 
-
-
-
-
-
-
-
-
-
-
-
-
-function permutations(array $elements)
-{
-    if (count($elements) <= 1) {
-        yield $elements;
-    } else {
-        foreach (permutations(array_slice($elements, 1)) as $permutation) {
-            // foreach (range(0, count($elements) - 1) as $i) {
-            for ($i = 0; $i <= 9; $i++) {
-                yield array_merge(
-                    array_slice($permutation, 0, $i),
-                    [$elements[0]],
-                    array_slice($permutation, $i)
-                );
-
-            }
-        }
-    }
 }
 
-$list = ['0', '1', '2', '3', '4'];
 
-foreach (permutations($list) as $permutation) {
-    echo implode(',', $permutation) . "<br>";
-}
-
+include('src/footer.php');
 
 ?>
-</body>
-</html>
