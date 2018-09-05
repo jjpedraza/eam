@@ -19,7 +19,7 @@
 
 ?>
 <div id='login' 	>
-	<h1> PubliSMS | Identificate:! </h1>
+	<h1> Debes identificarte: </h1>
 	<form action='login.php' method="post">	
 	<?php
 		session_start();		

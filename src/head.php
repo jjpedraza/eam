@@ -14,6 +14,8 @@ require("src/funciones.php");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="src/estiloprincipal.css" />
     <script src="src/main.js"></script>
+
+    <script src="src/jquery331.js"></script>
 </head>
 <body>
 <?php
