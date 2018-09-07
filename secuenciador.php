@@ -6,7 +6,8 @@ include('src/head.php');
 
 // echo "<form action='secuenciador.php' method='post'>";
 echo "<div class='ventana'>";
-echo "<h3>Generador de ramas telefonicas</h3>";
+echo "<h3 id='titulo'>Generador de ramas telefonicas</h3>";
+echo "<label id='informador'></label>";
 
 echo "<div><label>Lada</label><input type='number' size=3 placeholder='000' id='lada' name='lada' min=1 max=999 maxlength='3' required></div>";
 echo "<div><label>Rama</label><input type='number' size=3 placeholder='000' id='rama' name='rama' min=1 max=999 maxlength='3' required></div>";
@@ -23,8 +24,8 @@ echo "
 
 
     echo "<span id='preloader_genera' style='display:none;'>
-    <img src='img/preloader.gif' style='width:50%;'><br>
-    <b>Generando</b>
+    <img src='img/preloader.gif' style='width:100px;'><br>
+    <b id='esperando'>Generando</b>
     </span>";
 
 echo "</div>";
@@ -82,13 +83,35 @@ function GeneraRama(){
 }
 
 
+
+    
+// var myWorker = new Worker("GeneraRamaCount.js");
+// function Wk(){
+//     var Lada = $('#lada').val();
+//     var Rama = $('#rama').val();
+//     myWorker.postMessage(Lada+Rama);    
+//     myWorker.onmessage = function (oEvent) {
+//             console.log("Avance de "+Lada+Rama+": " + oEvent.data);
+//             $('#informador').html(oEvent.data);
+//     };
+    
+    
+// }
+
+// function Wk_stop(){
+//     myWorker.terminate();
+//     myWorker = undefined;
+// }
+
+// setInterval(Wk,5000);
+    
+// ----------------------------
+
+
  $("#btnGenera").click(function(){
     GeneraRama();
       
  });
-
-
-
 
 
 
