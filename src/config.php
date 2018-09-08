@@ -17,7 +17,7 @@ $paginacion= 20;
 	$dbhost = 'localhost';
 	$dbuser = 'root';
 	$dbpass = '';
-	$dbname = 'eam';
+	$dbname = 'publicsms';
 
 	if (function_exists('mysqli_connect')) {
 		//mysqli está instalado
