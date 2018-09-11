@@ -13,7 +13,7 @@ require("src/funciones.php");
     <title>SMS-PRO PrymeCode</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="src/estiloprincipal.css" />
-    <script src="src/main.js"></script>
+    
 
     <script src="src/jquery331.js"></script>
 </head>
