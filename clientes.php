@@ -130,7 +130,7 @@ if (isset($_POST['GuardarCliente'])){
 
 
 if (isset($_POST['ActualizaCliente'])){
-    $sql = "UPDATE clientes  SET nombre='".$_POST['nombre']."', ref='".$_POST['ref']."' WHERE celular='".$_POST['telefono']."'";
+    $sql = "UPDATE clientes  SET nombre='".$_POST['nombre']."', ref='".$_POST['referencia']."' WHERE celular='".$_POST['telefono']."'";
     if ($conexion->query($sql) == TRUE)
     {
         mensaje("Cliente ".$_POST['nombre']." actualizado correctamente",'clientes.php');
