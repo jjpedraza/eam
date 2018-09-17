@@ -124,6 +124,7 @@ article {
     width: 80%;
     display: inline-block;
     margin: 10px;
+    vertical-align: top;
 
 }
 .ventana div {
