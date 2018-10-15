@@ -1,0 +1,1 @@
+SELECT  GROUP_CONCAT(clave) FROM  ladas WHERE  clave like '%834%'
