@@ -51,6 +51,7 @@
 #menuprincipal{ 
     width:100%;
 }
+
 .tabla { width: 100%; font-size: 10pt; font-family: "Regular"; }
 .tabla a { }
 .tabla a:hover { }
@@ -138,8 +139,12 @@ font-family: "Compacta";
 text-transform: uppercase;
 
 }
+
+#menuprincipal img{
+    /* width: 100%; */
+}
 #menuprincipal li {
-    width:20%; background-color: white;
+    width:200px; background-color: white;
     padding: 10px;
     border: 1px gray solid; border-radius: 5px;
     display: inline-block;
@@ -155,6 +160,7 @@ text-transform: uppercase;
     font-family: "Light"; font-size: 12pt;
 
 }
+
 body {
     font-family: Verdana;
     margin: 0px;
@@ -191,7 +197,7 @@ form {
     margin: 10px;
 }
 
-input{
+input, select, textarea{
     height: 50px;
     font-size: 18pt;
     color: gray;
@@ -199,6 +205,9 @@ input{
     width: 100%;
 
 
+}
+textarea{
+    background-color: #0099CB; color:white;
 }
 input:focus {
     border: 0px;
@@ -361,3 +370,45 @@ input:focus {
 /* .btn-secundario { background-color: #9A968B; color: black; box-shadow: 0 3px rgb(95, 93, 88); font-family: "Compacta"; } */
 .btn-secundario:hover { box-shadow: 0 1px rgb(95, 93, 88); background-color: rgb(95, 93, 88); top: 2px; }
 .btn-secundario:active { box-shadow: 0 0 rgb(95, 93, 88); top: 6px; }
+
+
+li a img {
+    width:80px;
+}
+
+#SMS_Autorizardispositivo{
+    text-align: center;
+
+
+}
+
+#Dispositivos_autorizados, #Dispositivos_detenidos{
+    vertical-align: top;
+    background-color: #00698C; color:black;
+    width:48%;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 5px;
+}
+#Dispositivos_detenidos{
+    background-color:whitesmoke; color: gray;
+}
+@media only screen and (max-width:500px) {
+    .pc {
+      display: none
+    }
+
+    
+#menuprincipal li {
+    width:20%; background-color: white;
+    padding: 10px;
+    border: 1px gray solid; border-radius: 5px;
+    display: inline-block;
+    margin: 5px;
+    font-size: 10pt;
+}
+
+li a img {
+    width:50px;
+}
+}  

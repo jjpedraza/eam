@@ -1,5 +1,5 @@
 <?php 
-require("unica/config.php"); require("unica/funciones.php");
+require("src/config.php"); require("src/funciones.php");
 //WEBSERVICE PARA CONSUMIRSE CON LA APP ANDROID
 
 
@@ -40,7 +40,7 @@ if (isset($_GET['idi']) and isset($_GET['ext'])){//id del dispositivo (idi), no 
 
 
 function sms_ComentarioSMS($id){
-    require("unica/config.php");
+    require("src/config.php");
     $sql = "SELECT * FROM sms WHERE id='".$id."'";
     $resultado = $conexion -> query($sql);
     // if ($conexion->query($sql) == TRUE) { 
@@ -57,7 +57,7 @@ function sms_ComentarioSMS($id){
 }
 
 function sms_ActualizaEstadoSMS($id, $estado, $comentarios, $imei){
-    require("unica/config.php"); 
+    require("src/config.php"); 
     $sql="UPDATE sms SET estado='".$estado."', comentarios='".$comentarios."', dispositivo='".$imei."' WHERE id='".$id."'";
     // echo $sql;
     $resultado = $conexion -> query($sql);
@@ -69,7 +69,7 @@ function sms_ActualizaEstadoSMS($id, $estado, $comentarios, $imei){
 
 
 function sms_EntregaSMSalDispositivo($imei, $ext, $opt){
-    require("unica/config.php"); 
+    require("src/config.php"); 
 if ($opt=="1"){
     if (sms_validaDispositivo($imei,$ext)==TRUE){ //validamos que sea un dispositivo aut
         $sql = "select id, celular, mensaje from sms where estado=0 and dispositivo='' limit 1 "; //consulta para enviar 
@@ -100,7 +100,7 @@ if ($opt=="1"){
                     // echo $myJSON;
                     echo "0";
             }
-            historia('',"Se entrego webservice SMS al dispositivo con imei: ".$_GET['idi']."(".json_encode($rawdata).")");
+            // historia('',"Se entrego webservice SMS al dispositivo con imei: ".$_GET['idi']."(".json_encode($rawdata).")");
         } else {//si hubo error en la bd
             // $myObj = new stdClass;
             // $myObj->id = "0";
@@ -133,21 +133,18 @@ if ($opt=="1"){
 
 
 function sms_validaDispositivo($idi, $datoextra){//validamos el dispositivo, que sea nuestro y que este activo
-    require("unica/config.php");
+    require("src/config.php");
 $sql = "SELECT * FROM sms_dispositivos  WHERE imei='".$idi."' and  estado=1"; 
 $rc= $conexion -> query($sql);
 if($f = $rc -> fetch_array())
     {
-        historia('',"Se solicito webservice SMS desde el dispositivo con imei: ".$idi);
+        
         return TRUE;
     } else
     {
         //informar que se intento acceder con un imei erroneo
         $msg = "<p>Se intento acceder desde el Webservice de SMS con el imei ".$idi." a las ".$hora." de ".$fecha.", en un dispositivo no autorizado</p><p><b>Informacion
         del dispositivo:</b><br>".$datoextra;        
-        historia('',$msg);
-        //notificacion_add ('2809', 'Acceso Denegado para imei '.$idi, $fecha, '2809', $msg);
-        notificacion_add ('2809', 'ALERTA dispositivo '.$idi, $fecha, '2809', $msg);
         sms_AgregaDispositivo($idi,'', ''); //<-- agregamos y/o actualizamos los comentarios del dispositivo
         
         return FALSE;
@@ -157,7 +154,7 @@ if($f = $rc -> fetch_array())
 
 
 function sms_AgregaDispositivo($imei, $nombre, $descripcion){
-    require("unica/config.php");
+    require("src/config.php");
     //1.- lo buscamos en los dispositivos
     $sql = "SELECT * FROM sms_dispositivos  WHERE imei='".$imei."'"; 
     $rc= $conexion -> query($sql);
@@ -170,8 +167,6 @@ function sms_AgregaDispositivo($imei, $nombre, $descripcion){
         if ($conexion->query($sql) == TRUE) 
         {
             $dispositivo = "Equipo: ".$f['nombre'].", ".$f['descripcion'];
-            notificacion_add ('2809', 'SMSAlerta Esta intentando entrar: '.$imei, $fecha, '2809', "<p>El dispositivo ".$dispositivo." esta intentando acceder a la plataforma");
-            historia('',"<p>El dispositivo ".$dispositivo."con IMEI:<b>".$imei."</b> esta intentando acceder a la plataforma, se le ha negado el acceso");
             return TRUE;
         } else {return FALSE;}
         echo $sql;
@@ -183,8 +178,6 @@ function sms_AgregaDispositivo($imei, $nombre, $descripcion){
         
             if ($conexion->query($sql) == TRUE)
             {
-                notificacion_add ('2809', 'SMSAlerta Esta intentando entrar: '.$imei, $fecha, '2809', "<p>El dispositivo ".$imei." esta intentando acceder a la plataforma");
-                historia('',"<p>El dispositivo "."con IMEI:<b>".$imei."</b> esta intentando acceder a la plataforma, se le ha negado el acceso");
                 return TRUE;
             }
             else {return FALSE; }

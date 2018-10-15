@@ -1,7 +1,7 @@
 
 <?php
-require ("unica/config.php");
-require ("unica/funciones.php");
+require ("src/config.php");
+require ("src/funciones.php");
 
 //Write table on result sms
 $sql = "
@@ -48,12 +48,12 @@ ORDER BY  Porcentaje DESC
     {
     	if ($f['Porcentaje']=='100%'){
     		echo "<tr style='$StOK'>";
-    				echo "<td style='$StOK' title='".$f['Fecha']." | ".$f['Mensaje'].", Creada por ".nitavu_nombre($f['Admin'])."'>".$f['QBrigada']."</td>";
+    				echo "<td style='$StOK' title='".$f['Fecha']." | ".$f['Mensaje'].", Creada por ".$f['Admin']."'>".$f['QBrigada']."</td>";
     				echo "<td style='$StOK' title='Total de mensajes: ".$f['Total']."'>".$f['Porcentaje']."</td>";
 		    echo "</tr>";
     	} else {
 			echo "<tr style='$St'>";
-    				echo "<td style='$St' title='".$f['Fecha']." | ".$f['Mensaje'].", Creada por ".nitavu_nombre($f['Admin'])."'>".$f['QBrigada']."</td>";
+    				echo "<td style='$St' title='".$f['Fecha']." | ".$f['Mensaje'].", Creada por ".$f['Admin']."'>".$f['QBrigada']."</td>";
     				echo "<td style='$St' title='Total de mensajes: ".$f['Total']."(Sin entregar: ".$f['Faltantes'].", Entregados: ".$f['Avance'].")'>".$f['Porcentaje']."</td>";
 		    echo "</tr>";
     	}

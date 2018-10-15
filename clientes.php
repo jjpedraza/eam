@@ -68,8 +68,8 @@ if (isset($_GET['cl'])){
 	if($f = $rc -> fetch_array())
 	{
 		$nombre = $f['nombre']; $ref=$f['ref'];
-	}
-    echo "<form id='form1' method='post' action='clientes.php' class='modal'>";
+	
+    echo "<form id='form1' method='post' action='clientes.php' >";
     echo "<label>Nombre de mi cliente:</label><br>";
     echo "<input type='text' name='nombre'  value='".$f['nombre']."' required>";
     echo "<br><br>";
@@ -88,9 +88,9 @@ if (isset($_GET['cl'])){
     
     echo "";
     echo "</form>";
-
+    }
 } else {
-    echo "<form id='form1' method='post' action='clientes.php' class='modal'>";
+    echo "<form id='form1' method='post' action='clientes.php'>";
     
     echo "<label>Nombre de mi cliente:</label><br>";
     echo "<input type='text' name='nombre' required>";
@@ -115,7 +115,7 @@ if (isset($_GET['cl'])){
 
 
 if (isset($_POST['GuardarCliente'])){
-    $sql = "INSERT INTO clientes    (nombre, celular, ref)    VALUES    ('".$_POST['nombre']."', '".$_POST['telefono']."', '".$_POST['refencia']."')";
+    $sql = "INSERT INTO clientes    (nombre, celular, ref)    VALUES    ('".$_POST['nombre']."', '".$_POST['telefono']."', '".$_POST['referencia']."')";
     if ($conexion->query($sql) == TRUE)
     {
         mensaje("Cliente ".$_POST['nombre']." guardado correctamente",'clientes.php');

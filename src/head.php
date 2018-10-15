@@ -16,6 +16,8 @@ require("src/funciones.php");
     
 
     <script src="src/jquery331.js"></script>
+    <script src="src/jquery.modalpdz.js"></script> <link rel="stylesheet" href="src/jquery.modalcsspdz.css" />
+
 </head>
 <body>
 <?php
