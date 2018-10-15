@@ -10,12 +10,12 @@ echo "<td class='pc'><a href='clientes.php'>Agregar numeros de mis clientes </a>
 echo "</tr></table>";
 echo "</li>";
 
-// echo "<li>";
-// echo "<table><tr>";
-// echo "<td><a href='secuenciador.php'><img src='img/tel.png' ></a></td>";
-// echo "<td class='pc'><a href='secuenciador.php'>Generador de Ramas Telefonicas </a></td>";
-// echo "</tr></table>";
-// echo "</li>";
+echo "<li>";
+echo "<table><tr>";
+echo "<td><a href='secuenciador.php'><img src='img/tel.png' ></a></td>";
+echo "<td class='pc'><a href='secuenciador.php'>Generador de Ramas Telefonicas </a></td>";
+echo "</tr></table>";
+echo "</li>";
 
 
 echo "<li>";
